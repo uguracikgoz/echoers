@@ -1,0 +1,17 @@
+.messageSendButton {
+    z-index:1;
+    display:block;
+    font-size:17.3px;
+    background-color: rgb(0, 113, 113);
+    color:white;
+    border: 0px solid silver; border-radius: 25em; padding: 0.5em; padding-right:10px;
+}
+.messageSendButton:hover { 
+    color:rgb(252, 255, 71);
+    box-shadow: 0px;
+}
+
+.messageSendButton:disabled,
+.messageSendButton[disabled]{ 
+  color: #666666;
+}

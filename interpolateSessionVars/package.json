@@ -1,0 +1,20 @@
+{
+  "name": "interpolatesessionvars",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "author": "",
+  "license": "ISC",
+  "description": "Interpolates session vars into sentences",
+  "scripts": {
+    "start": "NODE_ENV=development ts-node index.ts",
+    "test": "nyc ./node_modules/.bin/_mocha 'test/**/*.ts'"
+  },
+  "dependencies": {
+    "@testdeck/mocha": "^0.2.0",
+    "chai": "^4.3.6",
+    "mocha": "^9.2.2",
+    "nyc": "^15.1.0",
+    "ts-mockito": "^2.6.1",
+    "ts-node": "^10.7.0"
+  }
+}
