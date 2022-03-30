@@ -1,0 +1,36 @@
+version: "2.1" # yaml engineering  (:
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: ${DB_TYPE}
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+    ports:
+      - '${DB_PORT}:${DB_PORT}'
+    expose:
+      - ${DB_PORT}
+    volumes:
+      - mysql:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
+  echobot_be:
+    build: ../be/.
+    container_name: echobot_be
+    ports:
+      - '${PORT}:${PORT}'
+    depends_on:
+      mysql:
+        condition: service_healthy
+  echobot_fe:
+    build: ../fe/.
+    container_name: echobot_fe
+    ports:
+      - '${FE_PORT}:${FE_PORT}'
+    depends_on:
+      - echobot_be
+volumes:
+  mysql:
